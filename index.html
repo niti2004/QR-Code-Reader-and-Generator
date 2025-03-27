@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Reader & Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.18.4/umd/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QRCode Library -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>QR Code Reader & Generator</h1>
+            <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        </header>
+
+        <!-- QR Code Reader Section -->
+        <div id="reader">
+            <div class="loading" id="loading">Loading camera...</div>
+            <video id="preview" width="100%" height="100%" style="border: 1px solid black;"></video>
+            <div id="feedback" class="feedback-message">QR Code successfully decoded!</div>
+            <div id="decoded-link-container" class="decoded-link">
+                <p>Decoded Link: <a href="#" id="decoded-link" target="_blank">Click to open</a></p>
+            </div>
+        </div>
+
+        <!-- QR Code Generator Section -->
+        <div class="qr-actions">
+            <input type="text" id="text-to-encode" placeholder="Enter URL to generate QR Code">
+            <button id="generate-qrcode">Generate QR Code</button>
+            <canvas id="qr-canvas"></canvas>
+            <a id="download-qrcode" href="#" download="qrcode.png" style="display:none;">Download QR Code</a>
+        </div>
+
+        <!-- Camera Selection Section -->
+        <div class="camera-selection">
+            <label for="camera-select">Select Camera:</label>
+            <select id="camera-select" onchange="changeCamera()">
+                <option value="">Select a camera</option>
+            </select>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
